@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>完善个人信息</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/layuiadmin/style/admin.css}" media="all">
+    <script th:inline="javascript">
+        var basePath = [[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]];
+    </script>
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">Improve personal information</div>
+                <div class="layui-card-body" pad15>
+                    <form class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">user name</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" lay-verify="required" lay-reqtext="The user name cannot be empty"
+                                       placeholder="enter one user name"
+                                       autocomplete="off" class="layui-input" th:value="${perfectInfo.username}"
+                                       style="cursor:not-allowed;" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="margin-top: 25px">head portrait</label>
+                            <div class="layui-input-inline">
+                                <img th:src="${perfectInfo.uimage}"
+                                     style="margin-left:30px; width:100px;border-radius:50%;cursor: pointer"
+                                     title="Click to modify Avatar" alt="head portrait" id="uimage">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">mailbox</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="email" value="" lay-verify="email" autocomplete="off"
+                                       placeholder="Please input email" class="layui-input" th:value="${perfectInfo.email}"
+                                       style="cursor:not-allowed;" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">school</label>
+                            <div class="layui-input-block">
+                                <select name="school" lay-filter="required">
+                                    <option value="Peking University">Peking University</option>
+                                    <option value="Tsinghua University">Tsinghua University</option>
+                                    <option value="Fudan University">Fudan University</option>
+                                    <option value="WuHan University">WuHan University</option>
+                                    <option value="Renmin University of China">Renmin University of China</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">Department</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="faculty" value="" lay-verify="faculty" autocomplete="off"
+                                       placeholder="Please enter your department" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">Admission time</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="startime" class="layui-input" id="time"
+                                           placeholder="Choose the time of admission">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">Gender</label>
+                            <div class="layui-input-block">
+                                <input type="radio" name="sex" value="男" title="男" checked>
+                                <input type="radio" name="sex" value="女" title="女">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">Submit immediately</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/static/layui/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/static/js/userInfo/perfectinfo.js}"></script>
+</body>
+</html>
