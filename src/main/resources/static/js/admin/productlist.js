@@ -18,15 +18,16 @@ function lookallproduct(stuatus) {
             , page: {
                 layout: ['limit', 'count', 'prev', 'page', 'next', 'skip']
                 , groups: 3
-                , limits: [20, 50, 100]
-                , limit: 20
+                , limits: [10, 20, 50]
+                , limit: 10
             }, cols: [[
-                {field: 'qid', title: 'ID',width:80, align:'center'}
-                , {field: 'commname', title: '名称', width: 300, align:'center'}
-                , {field: 'category', title: '类别', width: 100, align:'center'}
+                {field: 'qid', title: 'ID',width:100, align:'center'}
+                , {field: 'commname', title: 'Name', width: 500, align:'center'}
+                , {field: 'category', title: 'Class', width: 200, align:'center'}
+                /*
                 , {field: 'commdesc', title: '描述', width: 700, align:'center'}
-                , {field: 'updatetime', title: '时间', width: 160,sort: true, align:'center'}
-                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width:200, align:'center'}
+                , {field: 'updatetime', title: '时间', width: 160,sort: true, align:'center'}*/
+                , {fixed: 'right', title: 'OP', toolbar: '#barDemo', width:490, align:'center'}
             ]], done: function (res, curr, count) {
                 var i=1;
                 $("[data-field='qid']").children().each(function () {

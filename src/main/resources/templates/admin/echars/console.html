@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>数据分析</title>
+    <title>Data Analysis</title>
     <meta charset="utf-8">
     <!-- 引入 ECharts 文件 -->
     <!--<script th:href="@{/static/js/admin/echarts.js}" src="/js/admin/echarts.js"></script>-->
@@ -19,26 +19,26 @@
     var xData = function() {
         var data = [];
         for (var i = 1; i < 13; i++) {
-            data.push(i + "月份");
+            data.push(i + " Month");
         }
         return data;
     }();
 
     option = {
-        backgroundColor: "#344b58",
+        backgroundColor: "#f0ffff",
         "title": {
-            "text": "本年订单数量统计",
-            "subtext": "BY 校园商铺",
+            "top": "20",
+            "text": "Annual Order Statistics Chart",
+            //"subtext": "By @XDeGo",
             x: "4%",
 
             textStyle: {
-                color: '#fff',
+                color: '#000',
                 fontSize: '22'
             },
             subtextStyle: {
-                color: '#90979c',
+                color: '#000',
                 fontSize: '16',
-
             },
         },
         "tooltip": {
@@ -61,11 +61,11 @@
         },
         "legend": {
             x: '4%',
-            top: '11%',
+            top: '10%',
             textStyle: {
-                color: '#90979c',
+                color: '#000',
             },
-            "data": ['女', '男', '平均']
+            "data": ['Female', 'Male', 'Average']
         },
 
 
@@ -143,9 +143,9 @@
             "end": 35
         }],
         "series": [{
-            "name": "女",
+            "name": "Female",
             "type": "bar",
-            "stack": "总量",
+            "stack": "TotalNum",
             "barMaxWidth": 35,
             "barGap": "10%",
             "itemStyle": {
@@ -169,23 +169,23 @@
                 2,
                 3,
                 5,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
+                2,
+                1,
+                5,
+                4,
+                8,
+                6,
+                3
             ],
         },
 
             {
-                "name": "男",
+                "name": "Male",
                 "type": "bar",
-                "stack": "总量",
+                "stack": "TotalNum",
                 "itemStyle": {
                     "normal": {
-                        "color": "rgba(0,191,183,1)",
+                        "color": "rgba(99,184,255,1)",
                         "barBorderRadius": 0,
                         "label": {
                             "show": true,
@@ -202,23 +202,23 @@
                     5,
                     2,
                     4,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0
+                    6,
+                    2,
+                    3,
+                    5,
+                    3,
+                    2,
+                    4
                 ]
             }, {
-                "name": "总数",
+                "name": "Total",
                 "type": "line",
-                "stack": "总量",
+                "stack": "TotalNum",
                 symbolSize: 10,
                 symbol: 'circle',
                 "itemStyle": {
                     "normal": {
-                        "color": "rgba(252,230,48,1)",
+                        "color": "#c4000c",
                         "barBorderRadius": 0,
                         "label": {
                             "show": true,
@@ -235,13 +235,13 @@
                     7,
                     5,
                     9,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0
+                    8,
+                    3,
+                    8,
+                    9,
+                    11,
+                    8,
+                    7
                 ]
             },
         ]
