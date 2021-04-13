@@ -27,8 +27,7 @@ spring:
 
   thymeleaf:
     suffix: .html
-    prefix:
-      classpath: /templates/
+    prefix: classpath:/templates/
     cache: false
 
   jackson: #返回的日期字段的格式
