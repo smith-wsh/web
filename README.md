@@ -18,7 +18,7 @@ git checkout main
 git fetch
 git reset --soft 3f3fed8 # 这里替换为可运行的版本号
 git stash
-git push -f orign main
+git push -f origin main
 git stash pop
 ```
 
