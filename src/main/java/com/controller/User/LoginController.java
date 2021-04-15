@@ -91,35 +91,31 @@ public class LoginController {
             return new ResultVo(false, StatusCode.ERROR,"该手机号已经注册过了");
         }
         String code = GetCode.phonecode();
-        Integer result = new SmsUtil().SendMsg(mobilephone, code, type);//发送验证码
-        if(result == 1){//发送成功
-            phonecodemap1.put(mobilephone, code);//放入map集合进行对比
+        //Integer result = new SmsUtil().SendMsg(mobilephone, code, type);//发送验证码
+        // 发送成功
+        phonecodemap1.put(mobilephone, code);//放入map集合进行对比
 
 /*
-            final Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    phonecodemap1.remove(phoneNum);
-                    timer.cancel();
-                }
-            }, 5 * 60 * 1000);
+        final Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                phonecodemap1.remove(phoneNum);
+                timer.cancel();
+            }
+        }, 5 * 60 * 1000);
 */
-            //执行定时任务
-            ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1,
-                    new BasicThreadFactory.Builder().namingPattern("example-schedule-pool-%d").daemon(true).build());
-            executorService.scheduleAtFixedRate(new Runnable() {
-                @Override
-                public void run() {
-                    phonecodemap1.remove(mobilephone);
-                    ((ScheduledThreadPoolExecutor) executorService).remove(this::run);
-                }
-            },1 * 10 * 1000,1 * 10 * 1000, TimeUnit.HOURS);
-            return new ResultVo(true,StatusCode.SMS,"验证码发送成功");
-        }else if(result == 2){
-            return new ResultVo(false,StatusCode.ERROR,"请输入正确格式的手机号");
-        }
-        return new ResultVo(false,StatusCode.REMOTEERROR,"验证码发送失败");
+        //执行定时任务
+        ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1,
+                new BasicThreadFactory.Builder().namingPattern("example-schedule-pool-%d").daemon(true).build());
+        executorService.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                phonecodemap1.remove(mobilephone);
+                ((ScheduledThreadPoolExecutor) executorService).remove(this::run);
+            }
+        },1 * 10 * 1000,1 * 10 * 1000, TimeUnit.HOURS);
+        return new ResultVo(true,StatusCode.SMS,"验证码发送成功");
     }
 
     /**注册
@@ -249,39 +245,35 @@ public class LoginController {
             return new ResultVo(false, StatusCode.LOGINERROR,"该用户不存在");
         }
         String code = GetCode.phonecode();
-        Integer result = new SmsUtil().SendMsg(mobilephone, code, type);//发送验证码
-        if(result == 1) {//发送成功
-            phonecodemap2.put(mobilephone, code);//放入map集合进行对比
+        //Integer result = new SmsUtil().SendMsg(mobilephone, code, type);//发送验证码
+        // 发送成功
+        phonecodemap2.put(mobilephone, code);//放入map集合进行对比
 
 /*
-            final Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    phonecodemap2.remove(phoneNum);
-                    timer.cancel();
-                }
-            }, 5 * 60 * 1000);
+        final Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                phonecodemap2.remove(phoneNum);
+                timer.cancel();
+            }
+        }, 5 * 60 * 1000);
 */
 
-            //执行定时任务
-            ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1,
-                    new BasicThreadFactory.Builder().namingPattern("example-schedule-pool-%d").daemon(true).build());
-            executorService.scheduleAtFixedRate(new Runnable() {
-                @Override
-                public void run() {
-                    phonecodemap2.remove(mobilephone);
-                    ((ScheduledThreadPoolExecutor) executorService).remove(this::run);
-                }
-            },5 * 60 * 1000,5 * 60 * 1000, TimeUnit.HOURS);
+        //执行定时任务
+        ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1,
+                new BasicThreadFactory.Builder().namingPattern("example-schedule-pool-%d").daemon(true).build());
+        executorService.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                phonecodemap2.remove(mobilephone);
+                ((ScheduledThreadPoolExecutor) executorService).remove(this::run);
+            }
+        },5 * 60 * 1000,5 * 60 * 1000, TimeUnit.HOURS);
 
 
 
-            return new ResultVo(true,StatusCode.SMS,"验证码发送成功");
-        }else if(result == 2){
-            return new ResultVo(false,StatusCode.ERROR,"请输入正确格式的手机号");
-        }
-        return new ResultVo(false,StatusCode.REMOTEERROR,"验证码发送失败");
+        return new ResultVo(true,StatusCode.SMS,"验证码发送成功");
     }
 
     /**重置密码
