@@ -45,9 +45,9 @@ function lookallproduct(stuatus) {
             if (obj.event === 'xiangqing') {
                 window.open(basePath+"/product-detail/"+data.commid)
             }else if(obj.event === 'weigui'){
-                layer.confirm('确认商品违规吗？', {
-                    btn: ['确定','算了'], //按钮
-                    title:"违规商品",
+                layer.confirm('Are you sure this product will be violated?', {
+                    btn: ['Yes','Cancel'], //按钮
+                    title:"Violate the Product",
                     offset:"50px"
                 }, function(){
                     layer.closeAll();
@@ -93,9 +93,9 @@ function lookallproduct(stuatus) {
                 }, function(){
                 });
             }else if (obj.event === 'shenhe') {
-                layer.confirm('确认该商品通过审核吗？', {
-                    btn: ['确定','算了'], //按钮
-                    title:"审核商品",
+                layer.confirm('Are you sure this product will pass the verification?', {
+                    btn: ['Yes','Cancel'], //按钮
+                    title:"Verify the Product",
                     offset:"50px"
                 }, function(){
                     layer.closeAll();

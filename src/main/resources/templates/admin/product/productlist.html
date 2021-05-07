@@ -35,19 +35,17 @@
             -->
             <div class="animated fadeIn">
                 <table class="layui-hide" id="product" lay-filter="test"></table>
-                <!--
                 <script type="text/html" id="barDemo">
-                    <a class="layui-btn layui-btn-xs" lay-event="xiangqing">详情</a>
                     {{# if(d.commstatus!=4){ }}
-                        {{# if(d.commstatus!=0){ }}
-                        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="weigui">不合规定</a>
-                        {{# } }}
                         {{# if(d.commstatus!=1){ }}
-                        <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="shenhe">通过审核</a>
+                        <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="shenhe">Pass</a>
+                        {{# } }}
+                        {{# if(d.commstatus!=0){ }}
+                        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="weigui">Violate</a>
                         {{# } }}
                     {{# } }}
+                    <a class="layui-btn layui-btn-xs layui-btn-detail" lay-event="xiangqing">Details</a>
                 </script>
-                -->
             </div>
         </div>
     </div>
