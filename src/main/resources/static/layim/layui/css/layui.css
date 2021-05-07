@@ -2020,7 +2020,11 @@ a cite {
 }
 
 .layui-btn-normal {
-    background-color: #1E9FFF
+    background-color: #238e23
+}
+
+.layui-btn-detail {
+    background-color: #1d78cb
 }
 
 .layui-btn-warm {
@@ -2028,7 +2032,7 @@ a cite {
 }
 
 .layui-btn-danger {
-    background-color: #FF5722
+    background-color: #FF0000
 }
 
 .layui-btn-checked {
