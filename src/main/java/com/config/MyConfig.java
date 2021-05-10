@@ -32,7 +32,7 @@ public class MyConfig extends WebMvcConfigurerAdapter {
             /**静态资源处理*/
             @Override
             public void addResourceHandlers(ResourceHandlerRegistry registry) {
-                registry.addResourceHandler("/pic/**").addResourceLocations("file:D:/campusshops/file/");
+                registry.addResourceHandler("/pic/**").addResourceLocations("file:/opt/jetty/webapps/pic/");
                 super.addResourceHandlers(registry);
             }
         };

@@ -101,7 +101,7 @@ public class UserController {
         String filename = UUID.randomUUID().toString().replaceAll("-", "");
         String ext = FilenameUtils.getExtension(file.getOriginalFilename());//获得文件扩展名
         String filenames = filename + "." + ext;//文件全名
-        String pathname = "D:\\campusshops\\file\\" + filenames;
+        String pathname = "/opt/jetty/webapps/pic/" + filenames;
         file.transferTo(new File(pathname));
         resUrl.put("src", "/pic/"+filenames);
         res.put("msg", "");
