@@ -76,7 +76,7 @@ public class ChatCtrl {
         String userid = (String)session.getAttribute("userid");
         if(userid.equals(fuserid)){
             //不能对自己的商品感兴趣
-           return new ResultVo(false, StatusCode.ERROR,"不能对自己的商品感兴趣");
+           return new ResultVo(false, StatusCode.ERROR,"Can't like product posted by yourself!");
         }
         Friends friends=new Friends().setUserid(userid).setFuserid(fuserid);
         Integer integer = friendsService.JustTwoUserIsFriend(friends);
@@ -85,7 +85,7 @@ public class ChatCtrl {
             friendsService.insertFriend(friends);
             friendsService.insertFriend(new Friends().setFuserid(userid).setUserid(fuserid));
         }
-        return new ResultVo(false, StatusCode.OK,"正在跳转到聊天界面");
+        return new ResultVo(false, StatusCode.OK,"Jumping to Chatting page...");
     }
 
     /**

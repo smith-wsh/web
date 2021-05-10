@@ -10,12 +10,12 @@ layui.use(['form', 'element', 'util', 'carousel', 'laypage', 'layer','table'], f
             , limit: 20
         }, cols: [[
             {field: 'qid', title: 'ID',width:60, align:'center'}
-            , {field: 'commname', title: '名称', width: 250, align:'center'}
-            , {field: 'commdesc', title: '描述', width: 600, align:'center'}
-            , {field: 'username', title: '发布者', width: 110, align:'center'}
-            , {field: 'school', title: '学校', width: 130, align:'center'}
-            , {field: 'soldtime', title: '收藏时间', width: 160, align:'center'}
-            , {fixed: 'right', title: '操作', toolbar: '#barDemo', width:140, align:'center'}
+            , {field: 'commname', title: 'Product Name', width: 250, align:'center'}
+            , {field: 'commdesc', title: 'Description', width: 600, align:'center'}
+            , {field: 'username', title: 'Owner', width: 110, align:'center'}
+            , {field: 'school', title: 'School', width: 130, align:'center'}
+            , {field: 'soldtime', title: 'Time', width: 160, align:'center'}
+            , {fixed: 'right', title: 'Operation', toolbar: '#barDemo', width:140, align:'center'}
         ]]
         ,height: 500
         , done: function (res, curr, count) {
@@ -45,9 +45,10 @@ layui.use(['form', 'element', 'util', 'carousel', 'laypage', 'layer','table'], f
                 content: basePath+'/user/editgoods/'+data.commid
             });
         }else if(obj.event === 'quxiaoshoucang'){
-            layer.confirm('确认取消收藏该商品吗？', {
-                btn: ['确定','算了'], //按钮
-                title:"取消收藏",
+            // 取消商品收藏 mdf. cg
+            layer.confirm('Sure to cancel collection?', {
+                btn: ['yes','no'], //按钮
+                title:"cancel collection",
                 offset:"50px"
             }, function(){
                 layer.closeAll();

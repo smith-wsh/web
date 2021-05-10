@@ -61,16 +61,16 @@ public class CollectController {
                         .setSoldtime(GetDate.strToDate());
                 Integer i = collectService.updateCollect(collect);
                 if (i == 1){
-                    return new ResultVo(true, StatusCode.OK,"收藏成功");
+                    return new ResultVo(true, StatusCode.OK,"Collect successfully");
                 }
-                return new ResultVo(false,StatusCode.ERROR,"收藏失败");
+                return new ResultVo(false,StatusCode.ERROR,"Fail to collect");
             }else{
                 collect.setId(KeyUtil.genUniqueKey());
                 Integer i = collectService.insertCollect(collect);
                 if (i == 1){
-                    return new ResultVo(true, StatusCode.OK,"收藏成功");
+                    return new ResultVo(true, StatusCode.OK,"Collect successfully");
                 }
-                return new ResultVo(false,StatusCode.ERROR,"收藏失败");
+                return new ResultVo(false,StatusCode.ERROR,"Fail to collect");
             }
 
         }else {
@@ -79,11 +79,11 @@ public class CollectController {
             if (collect1.getCouserid().equals(couserid)){
                 Integer i = collectService.updateCollect(collect);
                 if (i == 1){
-                    return new ResultVo(true, StatusCode.OK,"取消成功");
+                    return new ResultVo(true, StatusCode.OK,"Cancel successfully");
                 }
-                return new ResultVo(false,StatusCode.ERROR,"取消失败");
+                return new ResultVo(false,StatusCode.ERROR,"Fail to cancel");
             }
-            return new ResultVo(false,StatusCode.ACCESSERROR,"禁止操作");
+            return new ResultVo(false,StatusCode.ACCESSERROR,"No permission!");
         }
     }
 
@@ -104,11 +104,11 @@ public class CollectController {
             collect.setColloperate(2);
             Integer i = collectService.updateCollect(collect);
             if (i == 1){
-                return new ResultVo(true, StatusCode.OK,"取消成功");
+                return new ResultVo(true, StatusCode.OK,"Cancel successfully");
             }
-            return new ResultVo(false,StatusCode.ERROR,"取消失败");
+            return new ResultVo(false,StatusCode.ERROR,"Fail to cancel");
         }
-        return new ResultVo(false,StatusCode.ACCESSERROR,"禁止操作");
+        return new ResultVo(false,StatusCode.ACCESSERROR,"No permission!");
     }
 
     /**

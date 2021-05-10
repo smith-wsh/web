@@ -79,16 +79,16 @@ public class LoginController {
         Integer type = jsonObject.getInt("type");
         Login login = new Login();
         if(type!=0){
-            return new ResultVo(false,StatusCode.ACCESSERROR,"违规操作");
+            return new ResultVo(false,StatusCode.ACCESSERROR,"Illegal operation!");
         }
         if (!JustPhone.justPhone(mobilephone)) {//判断输入的手机号格式是否正确
-            return new ResultVo(false,StatusCode.ERROR,"请输入正确格式的手机号");
+            return new ResultVo(false,StatusCode.ERROR,"Please check your phone number format!");
         }
         //查询手机号是否已经注册
         login.setMobilephone(mobilephone);
         Login userIsExist = loginService.userLogin(login);
         if (!StringUtils.isEmpty(userIsExist)){//用户账号已经存在
-            return new ResultVo(false, StatusCode.ERROR,"该手机号已经注册过了");
+            return new ResultVo(false, StatusCode.ERROR,"Phone number already used!");
         }
         String code = GetCode.phonecode();
         //Integer result = new SmsUtil().SendMsg(mobilephone, code, type);//发送验证码
@@ -115,7 +115,7 @@ public class LoginController {
                 ((ScheduledThreadPoolExecutor) executorService).remove(this::run);
             }
         },1 * 10 * 1000,1 * 10 * 1000, TimeUnit.HOURS);
-        return new ResultVo(true,StatusCode.SMS,"验证码发送成功");
+        return new ResultVo(true,StatusCode.SMS,"Verification code sent.");
     }
 
     /**注册
@@ -136,16 +136,16 @@ public class LoginController {
         //查询账号是否已经注册
         Login userIsExist = loginService.userLogin(login);
         if (!StringUtils.isEmpty(userIsExist)){//用户账号已经存在
-            return new ResultVo(false, StatusCode.ERROR,"该用户已经注册过了");
+            return new ResultVo(false, StatusCode.ERROR,"User ID already exists!");
         }
         login.setUsername(username).setMobilephone(null);
         Login userNameIsExist = loginService.userLogin(login);
         if (!StringUtils.isEmpty(userNameIsExist)){//用户名已经存在
-            return new ResultVo(false, StatusCode.ERROR,"用户名已存在，请换一个吧");
+            return new ResultVo(false, StatusCode.ERROR,"User name already in use!");
         }
         String rel = phonecodemap1.get(mobilephone);
         if (StringUtils.isEmpty(rel)) {//验证码到期 或者 没发送短信验证码
-            return new ResultVo(false,StatusCode.ERROR,"请重新获取验证码");
+            return new ResultVo(false,StatusCode.ERROR,"Please get the verification code again!");
         }
         if (rel.equalsIgnoreCase(vercode)) {//验证码正确
             //盐加密
@@ -166,11 +166,11 @@ public class LoginController {
                 UsernamePasswordToken token=new UsernamePasswordToken(mobilephone, new Md5Hash(password,"Campus-shops").toString());
                 Subject subject= SecurityUtils.getSubject();
                 subject.login(token);
-                return new ResultVo(true,StatusCode.OK,"注册成功");
+                return new ResultVo(true,StatusCode.OK,"Register success!");
             }
-            return new ResultVo(false,StatusCode.ERROR,"注册失败");
+            return new ResultVo(false,StatusCode.ERROR,"Register failure.");
         }
-        return new ResultVo(false,StatusCode.ERROR,"验证码错误");
+        return new ResultVo(false,StatusCode.ERROR,"Wrong verification code!");
     }
 
     /**登录
@@ -185,7 +185,7 @@ public class LoginController {
         String vercode=login.getVercode();
         UsernamePasswordToken token;
         if(!ValidateCode.code.equalsIgnoreCase(vercode)){
-            return new ResultVo(false,StatusCode.ERROR,"请输入正确的验证码");
+            return new ResultVo(false,StatusCode.ERROR,"Wrong verification code!");
         }
         //判断输入的账号是否手机号
         if (!JustPhone.justPhone(account)) {
@@ -211,11 +211,11 @@ public class LoginController {
             Login login1 = loginService.userLogin(login);
             session.setAttribute("userid",login1.getUserid());
             session.setAttribute("username",login1.getUsername());
-            return new ResultVo(true,StatusCode.OK,"登录成功");
+            return new ResultVo(true,StatusCode.OK,"Login successfully!");
         }catch (UnknownAccountException e){
-            return new ResultVo(true,StatusCode.LOGINERROR,"用户名不存在");
+            return new ResultVo(true,StatusCode.LOGINERROR,"User name does not exist!");
         }catch (IncorrectCredentialsException e){
-            return new ResultVo(true,StatusCode.LOGINERROR,"密码错误");
+            return new ResultVo(true,StatusCode.LOGINERROR,"Wrong password!");
         }
     }
 
