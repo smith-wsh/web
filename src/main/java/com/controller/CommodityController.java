@@ -146,7 +146,7 @@ public class CommodityController {
         String filename = UUID.randomUUID().toString().replaceAll("-", "");
         String ext = FilenameUtils.getExtension(file.getOriginalFilename());
         String filenames = filename + "." + ext;
-        String pathname = "D:\\campusshops\\file\\" + filenames;
+        String pathname = "/opt/jetty/webapps/pic/" + filenames;
         file.transferTo(new File(pathname));
         resUrl.put("src", "/pic/"+filenames);
         res.put("msg", "");
@@ -168,7 +168,7 @@ public class CommodityController {
             String filename = UUID.randomUUID().toString().replaceAll("-", "");
             String ext = FilenameUtils.getExtension(files.getOriginalFilename());
             String filenames = filename + "." + ext;
-            String pathname = "D:\\campusshops\\file\\" + filenames;
+            String pathname = "/opt/jetty/webapps/pic/" + filenames;
             files.transferTo(new File(pathname));
             imageurls.add("/pic/"+filenames);
             res.put("msg", "");
