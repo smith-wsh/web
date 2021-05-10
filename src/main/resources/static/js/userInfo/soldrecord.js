@@ -9,12 +9,12 @@ layui.use(['form', 'element', 'util', 'carousel', 'laypage', 'layer','table'], f
             , limits: [20, 50, 100]
             , limit: 20
         }, cols: [[
-            {field: 'id', title: '订单号',width:180, align:'center'}
-            , {field: 'commname', title: '名称', width: 280, align:'center'}
-            , {field: 'commdesc', title: '描述', width: 600, align:'center'}
-            , {field: 'thinkmoney', title: '售价', width: 90, align:'center'}
-            , {field: 'soldtime', title: '售出时间', width: 160, sort: true, align:'center'}
-            , {fixed: 'right', title: '操作', toolbar: '#barDemo', width:145, align:'center'}
+            {field: 'id', title: 'The order number',width:180, align:'center'}
+            , {field: 'commname', title: 'Title', width: 250, align:'center'}
+            , {field: 'commdesc', title: 'Description', width: 250, align:'center'}
+            , {field: 'thinkmoney', title: 'Selling price', width: 150, align:'center'}
+            , {field: 'soldtime', title: 'Time to sell', width: 260, sort: true, align:'center'}
+            , {fixed: 'right', title: 'Operation', toolbar: '#barDemo', width:200, align:'center'}
         ]]
         ,height: 500
     });
@@ -24,9 +24,9 @@ layui.use(['form', 'element', 'util', 'carousel', 'laypage', 'layer','table'], f
         if (obj.event === 'xiangqing') {
             window.open(basePath+"/product-detail/"+data.commid)
         }else if(obj.event === 'shanchujilu'){
-            layer.confirm('确认删除该条记录吗？', {
-                btn: ['确定','算了'], //按钮
-                title:"删除售出记录",
+            layer.confirm('Are you sure you want to delete this record?', {
+                btn: ['Yes','No'], //按钮
+                title:"Delete the sales record",
                 offset:"50px"
             }, function(){
                 layer.closeAll();
