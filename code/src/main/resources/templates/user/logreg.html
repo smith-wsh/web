@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ch">
+<head>
+    <base th:href="${#request.getScheme()}+'://'+${#request.getServerName()}+':'+${#request.getServerPort()}+${#request.getContextPath()}">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xidian Go | Log in</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/layui/css/layui.css}"/>
+    <link rel="stylesheet" th:href="@{/static/css/userInfo/lgstyle.css}">
+    <script type="text/javascript" th:src="@{/static/layui/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/vue.js}"></script>
+    <script th:inline="javascript">
+        var basePath = [[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]];
+    </script>
+</head>
+
+<body>
+<div class="dowebok">
+    <div class="form sign-in">
+        <h2>Welcome back</h2>
+        <label>
+            <span>Account</span>
+            <input type="text" autocomplete="off" placeholder="Please enter your account number" id="username"/>
+        </label>
+        <label>
+            <span>Password</span>
+            <input type="password" autocomplete="off" placeholder="Please enter your password" id="password" onkeyup="this.value=this.value.replace(/\s+/g,'')"/>
+        </label>
+        <label>
+            <span>The verification code</span>
+            <input type="text" autocomplete="off" placeholder="Please enter the verification code" id="vercode" onkeyup="this.value=this.value.replace(/\s+/g,'')"/>
+        </label>
+        <label>
+            <img th:src="@{/images}" title="Can't see clearly, please click on the picture refresh" width="128px"
+                 height="33px" id="image1" onclick="getcode(this)"/>
+        </label>
+        <p class="forgot-pass"><a th:href="@{/forget}">Forget your password?</a></p>
+        <button type="button" class="submit" id="submitlg" style="margin-top:10px" onclick="submitlogin()">login</button>
+    </div>
+    <div class="sub-cont">
+        <div class="img">
+            <div class="img__text m--up">
+                <h2>Not registered yet?</h2>
+                <p>Sign up now!</p>
+            </div>
+            <div class="img__text m--in">
+                <h2>Already have an account?</h2>
+                <p>Have an account to log in, find fun, good things!</p>
+            </div>
+            <div class="img__btn">
+                <span class="m--up">enroll</span>
+                <span class="m--in">login</span>
+            </div>
+        </div>
+        <div class="form sign-up" id="registers" style="margin-top:-25px">
+            <h2>Sign up now</h2>
+            <label>
+                <span>Cell phone number</span><!-- @blur="jiantingphone()"/>-->
+                <input type="text" autocomplete="off" placeholder="Please enter your account number" id="userphone" onkeyup="this.value=this.value.replace(/\s+/g,'')"/>
+            </label>
+            <label>
+                <span>Mailbox</span>
+                <input type="email" autocomplete="off" placeholder="Please enter your mailbox" id="useremail" onkeyup="this.value=this.value.replace(/\s+/g,'')"/>
+            </label>
+            <label>
+                <span>The user name</span>
+                <input type="text" autocomplete="off" placeholder="Please enter your username" id="nickname"/>
+            </label>
+            <label>
+                <span>Password</span>
+                <input type="password" autocomplete="off" placeholder="Please enter your password" id="password2" onkeyup="this.value=this.value.replace(/\s+/g,'')"/>
+            </label>
+
+            <label>
+                <span>The verification code</span>
+                <input type="text" autocomplete="off" placeholder="Please enter the verification code" id="phonevercode"  onkeyup="this.value=this.value.replace(/\s+/g,'')"/>
+            </label>
+            <label>
+                <button type="button" class="layui-btn layui-btn-primary layui-btn-fluid " id="LAY-user-getsmscode"
+                        onclick="getphonecode()">Get the verification code</button>
+            </label>
+            <button type="button" id="submitrg" class="submit" style="margin-top:10px" onclick="submitregister()">Login</button>
+        </div>
+    </div>
+</div>
+</body>
+<script th:src="@{/static/layui/layui.js}"></script>
+<script th:src="@{/static/js/js.cookie.min.js}"></script>
+<script th:src="@{/static/js/userInfo/logreg.js}"></script>
+</html>
